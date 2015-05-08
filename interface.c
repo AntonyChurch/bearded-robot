@@ -6,6 +6,13 @@ int pins[21];
 int setup()
 {
   int setupValue = wiringPiSetup();
+
+  int i = 0;
+  for(i; i < 21; ++i)
+  {
+    pins[i] = 0;
+  }
+
   return setupValue;
 }
 
@@ -29,7 +36,7 @@ int turn_off(int port)
 
 void configure_port(int port)
 {
-  if(pins[port] == null)
+  if(pins[port] == -1)
   {
     pinMode(port, OUTPUT);
     pins[port] = port;
