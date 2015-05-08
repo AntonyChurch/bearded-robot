@@ -7,6 +7,13 @@ This module makes use of the WiringPi library as a simpler method for controllin
 
 At this point, the only working thing is a barebones test driver for Erlang/C.
 
+#Compilation
+To Compile the C application:
+`gcc interface.c interface_driver.c erl_comm.c -lwiringPi -o interface`
+
+To Compile the Erlang Module:
+`erlc connector.erl`
+
 #Todo
 1. Figure out process for starting WiringPi.
 2. Controlling set pinModes in WiringPi from Erlang.

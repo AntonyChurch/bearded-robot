@@ -7,10 +7,9 @@ int read_cmd(byte *buf);
 int write_cmd(byte *buf, int len);
 
 //Defined in test1.c
-int add(int x, int y);
-int multiply(int x, int y);
-int square(int x);
-int onoff(int port, int direction);
+int setup();
+int turn_on(int port);
+int turn_off(int port);
 
 int main()
 {
@@ -23,30 +22,19 @@ int main()
 
     if(fn == 1)
     {
-      arg1 = buff[1];
-      arg2 = buff[2];
-
-      result = add(arg1, arg2);
+      result = setup();
     }
     else if (fn == 2)
     {
       arg1 = buff[1];
-      arg2 = buff[2];
 
-      result = multiply(arg1, arg2);
+      result = turn_on(arg1);
     }
     else if (fn == 3)
     {
       arg1 = buff[1];
 
-      result = square(arg1);
-    }
-    else if (fn == 4)
-    {
-      arg1 = buff[1];
-      arg2 = buff[2];
-
-      result = onoff(arg1, arg2);
+      result = turn_off(arg1);
     }
     else
     {

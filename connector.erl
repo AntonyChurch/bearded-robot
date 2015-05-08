@@ -14,10 +14,9 @@ start() ->
 stop() ->
   ?MODULE ! stop.
 
-add(X, Y) -> call_port({add, X, Y}).
-multiply(X, Y) -> call_port({multiply, X, Y}).
-square(X) -> call_port({square, X}).
-onoff(Port, Direction) -> call_port({onoff, Port, Direction}).
+setup() -> call_port(setup).
+turn_on(Port) -> call_port({turn_on, Port}).
+turn_off(Port) -> call_port({turn_off, Port}).
 
 call_port(Msg) ->
   ?MODULE ! {call, self(), Msg},
@@ -45,9 +44,8 @@ loop(Port) ->
       exit({port_terminated, Reason})
   end.
 
-  encode({add, X, Y}) -> [1, X, Y];
-  encode({multiply, X, Y}) -> [2, X, Y];
-  encode({square, X}) -> [3, X];
-  encode({onoff, Port, Direction}) -> [4, Port, Direction].
+  encode(setup) -> [1];
+  encode({turn_on, Port}) -> [2, Port];
+  encode({turn_off, Port}) -> [3, Port].
 
   decode([Int]) -> Int.
