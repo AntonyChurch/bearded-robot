@@ -1,6 +1,6 @@
 #include <wiringPi.h>
 
-configure_pin(int port);
+void configure_pin(int port);
 
 //Used [WiringPi docs](http://wiringpi.com/wp-content/uploads/2013/03/pins.pdf)
 int pins[21];
