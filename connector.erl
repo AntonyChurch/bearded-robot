@@ -1,13 +1,13 @@
 -module(connector).
 
 -export([start/0, stop/0]).
--export([add/2, multiply/2, square/1, onoff/2]).
+-export([turn_on/1, turn_off/1, setup/0]).
 
 start() ->
   register(connector,
             spawn(fun() ->
                     process_flag(trap_exit, true),
-                    Port = open_port({spawn, "./test1"}, [{packet, 2}]),
+                    Port = open_port({spawn, "./interface"}, [{packet, 2}]),
                     loop(Port)
                  end)).
 
