@@ -1,6 +1,6 @@
 #include <wiringPi.h>
 
-configure_port(int port);
+configure_pin(int port);
 
 //Used [WiringPi docs](http://wiringpi.com/wp-content/uploads/2013/03/pins.pdf)
 int pins[21];
@@ -20,7 +20,7 @@ int setup()
 
 int turn_on(int port)
 {
-  configure_port(port);
+  configure_pin(port);
 
   digitalWrite(port, 1);
 
@@ -36,7 +36,7 @@ int turn_off(int port)
   return 1;
 }
 
-void configure_port(int port)
+void configure_pin(int port)
 {
   if(pins[port] == -1)
   {
