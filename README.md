@@ -3,6 +3,8 @@ Erlang library for controlling Raspberry Pi GPIO pins
 
 The module will connect to a C library which in turn controls the GPIO on the Raspberry Pi.
 
+To connect Erlang to C an example was taken from the book: [Programming Erlang] (https://pragprog.com/book/jaerlang2/programming-erlang)
+
 This module makes use of the WiringPi library as a simpler method for controlling the GPIO from C.
 
 At this point, the only working thing is a barebones test driver for Erlang/C.
