@@ -29,7 +29,7 @@ int turn_on(int port)
 
 int turn_off(int port)
 {
-  configure_port(port);
+  configure_pin(port);
 
   digitalWrite(port, 0);
 
