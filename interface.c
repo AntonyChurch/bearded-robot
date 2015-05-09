@@ -4,6 +4,7 @@ void configure_pin(int port);
 
 //Used [WiringPi docs](http://wiringpi.com/wp-content/uploads/2013/03/pins.pdf)
 int pins[21];
+bool isSetup = false;
 
 int setup()
 {
@@ -15,11 +16,22 @@ int setup()
     pins[i] = 0;
   }
 
+  setup = true;
+
   return setupValue;
 }
 
 int turn_on(int port)
 {
+  if(isSetup == false)
+  {
+    int setupReturn = setup();
+    if(setupReturn == -1)
+    {
+      return setupReturn;
+    }
+  }
+
   configure_pin(port);
 
   digitalWrite(port, 1);
@@ -29,6 +41,15 @@ int turn_on(int port)
 
 int turn_off(int port)
 {
+  if(isSetup == false)
+  {
+    int setupReturn = setup();
+    if(setupReturn == -1)
+    {
+      return setupReturn;
+    }
+  }
+
   configure_pin(port);
 
   digitalWrite(port, 0);
