@@ -1,4 +1,4 @@
-# pioe
+# Bearded Robot
 Erlang library for controlling Raspberry Pi GPIO pins
 
 The module will connect to a C library which in turn controls the GPIO on the Raspberry Pi.
